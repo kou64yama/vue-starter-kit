@@ -9,7 +9,8 @@
 
 import webpack from 'webpack';
 import nodeExternals from 'webpack-node-externals';
-import common, { isDebug, reStyle, reImage } from './webpack.common';
+import common, { isDebug, reStyle, reImage, BUILD_DIR } from './webpack.common';
+import overrideRules from './lib/overrideRules';
 
 // tslint:disable-next-line variable-name
 const VueLoaderPlugin: {
@@ -28,6 +29,7 @@ const serverConfig = {
 
   output: {
     ...common.output,
+    path: BUILD_DIR,
     filename: '[name].js',
     chunkFilename: 'chunks/[name].js',
     libraryTarget: 'commonjs2',
@@ -37,6 +39,28 @@ const serverConfig = {
   // https://github.com/webpack/webpack/issues/4817
   resolve: {
     ...common.resolve,
+  },
+
+  module: {
+    ...common.module,
+    rules: overrideRules(common.module.rules, rule => {
+      // Override paths to static assets
+      if (
+        rule.loader === 'file-loader' ||
+        rule.loader === 'url-loader' ||
+        rule.loader === 'svg-url-loader'
+      ) {
+        return {
+          ...rule,
+          options: {
+            ...(rule.options as any),
+            emitFile: false,
+          },
+        };
+      }
+
+      return rule;
+    }),
   },
 
   externals: [

@@ -36,10 +36,6 @@ module.exports = {
   collectCoverageFrom: [
     'src/**/*.{ts,tsx,vue}',
     '!**/*.d.ts',
-    '!src/{server,client,config,firebase}.ts',
-    '!src/App.vue',
-    '!src/{routes,store}/index.ts',
-    '!src/{components,routes}/*/{index,[A-Z]*}.ts',
     '!**/node_modules/**',
     '!**/vendor/**',
   ],
@@ -68,7 +64,8 @@ module.exports = {
   // like images or styles with a single module.
   moduleNameMapper: {
     '\\.(css|less|styl|scss|sass|sss)$': 'identity-obj-proxy',
-    '^@/(.+)$': '<rootDir>/src/$1'
+    '^@/test/(.+)$': '<rootDir>/test/$1',
+    '^@/(.+)$': '<rootDir>/src/$1',
   },
 
   // modulePathIgnorePatterns: // [array<string>]
@@ -107,7 +104,7 @@ module.exports = {
   transform: {
     '\\.(ts|tsx)$': '<rootDir>/node_modules/ts-jest',
     '\\.vue$': '<rootDir>/node_modules/vue-jest',
-    '^(?!.*\\.(ts|tsx|json|css|less|styl|scss|sass|sss)$)':
+    '^(?!.*\\.(ts|tsx|json|vue|css|less|styl|scss|sass|sss)$)':
       '<rootDir>/tools/lib/fileTransformer.js',
   },
 

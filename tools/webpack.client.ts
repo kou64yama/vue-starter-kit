@@ -35,7 +35,6 @@ const clientConfig = {
   output: {
     ...common.output,
     path: resolvePath(BUILD_DIR, 'public/assets'),
-    publicPath: '/assets/',
   },
 
   // Webpack mutates resolve object, so clone it to avoid issues

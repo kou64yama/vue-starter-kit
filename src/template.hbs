@@ -3,11 +3,14 @@
   <head>
     <meta charset="utf-8">
     <title>{{title}}</title>
+    <meta name="description" content="{{description}}">
+    {{{styles}}}
   </head>
   <body>
     {{{html}}}
-
-    <script src="{{assets.[vendors.js]}}"></script>
-    <script src="{{assets.[client.js]}}"></script>
+    {{{state}}}
+    {{#each scripts}}
+    <script lang="ts" src="{{this}}"></script>
+    {{/each}}
   </body>
 </html>

@@ -18,6 +18,6 @@
   },
 
   "linterOptions": {
-    "exclude": ["*.json"]
+    "exclude": ["mode_modules", "build", "*.json"]
   }
 }

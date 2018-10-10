@@ -45,7 +45,7 @@ const config = {
   mode: isDebug ? 'development' : 'production',
 
   output: {
-    path: BUILD_DIR,
+    publicPath: '/assets/',
     pathinfo: isVerbose,
     filename: isDebug ? '[name].js' : '[name].[chunkhash:8].js',
     chunkFilename: isDebug
@@ -175,6 +175,12 @@ const config = {
         loader: 'raw-loader',
       },
 
+      // Convert Markdown into HTML
+      {
+        test: /\.md$/,
+        loader: path.resolve(__dirname, './lib/markdown-loader.js'),
+      },
+
       // Return public URL for all assets unless explicitly excluded
       // DO NOT FORGET to update `exclude` list when you adding a new loader
       {
@@ -185,6 +191,7 @@ const config = {
           /\.vue$/,
           /\.json$/,
           /\.txt$/,
+          /\.md$/,
           /\.hbs$/,
         ],
         loader: 'file-loader',
