@@ -24,7 +24,7 @@ const serverConfig = {
   target: 'node',
 
   entry: {
-    server: ['./src/server.ts'],
+    server: ['@babel/polyfill', './src/server.ts'],
   },
 
   output: {

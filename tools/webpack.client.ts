@@ -29,7 +29,7 @@ const clientConfig = {
   target: 'web',
 
   entry: {
-    client: ['./src/client.ts'],
+    client: ['@babel/polyfill', './src/client.ts'],
   },
 
   output: {

@@ -9,6 +9,7 @@
 
 import path from 'path';
 import webpack from 'webpack';
+import pkg from '../package.json';
 import tsConfig from '../tsconfig.json';
 
 export const ROOT_DIR = path.resolve(__dirname, '..');
@@ -74,25 +75,60 @@ const config = {
     strictExportPresence: true,
 
     rules: [
-      // Rules for TS / TSX
-      {
-        test: /\.tsx?$/,
-        loader: 'ts-loader',
-        options: {
-          transpileOnly: isDebug,
-          appendTsSuffixTo: [/\.vue$/],
-          compilerOptions: {
-            ...tsConfig.compilerOptions,
-            sourceMap: true,
-            inlineSourceMap: false,
-          },
-        },
-      },
-
       // Rules for Vue single-file components
       {
         test: /\.vue$/,
         loader: 'vue-loader',
+      },
+
+      // Rules for JS / JSX / TS / TSX
+      {
+        test: reScript,
+        include: [SRC_DIR, resolvePath('tools')],
+        rules: [
+          {
+            loader: 'babel-loader',
+            options: {
+              // https://github.com/babel/babel-loader#options
+              cacheDirectory: isDebug,
+
+              // https://babeljs.io/docs/usage/options/
+              babelrc: false,
+              presets: [
+                // A Babel preset that can automatically determine the Babel plugins and polyfills
+                // https://github.com/babel/babel-preset-env
+                [
+                  '@babel/preset-env',
+                  {
+                    targets: {
+                      browsers: pkg.browserslist,
+                    },
+                    forceAllTransforms: !isDebug, // for UglifyJS
+                    modules: false,
+                    useBuiltIns: false,
+                    debug: false,
+                  },
+                ],
+              ],
+              plugins: ['@babel/plugin-syntax-dynamic-import'],
+            },
+          },
+          {
+            test: /\.tsx?$/,
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: isDebug,
+              appendTsSuffixTo: [/\.vue$/],
+              compilerOptions: {
+                ...tsConfig.compilerOptions,
+                target: 'es2015',
+                module: 'esnext',
+                sourceMap: true,
+                inlineSourceMap: false,
+              },
+            },
+          },
+        ],
       },
 
       // Rules for Style Sheets
