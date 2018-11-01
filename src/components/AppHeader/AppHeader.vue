@@ -1,6 +1,7 @@
 <template>
   <div class="root">
     <div class="container">
+      <app-navigation/>
       <router-link class="brand" :to="{ name: 'home' }">
         <img
           src="./logo-small.png"
@@ -11,7 +12,6 @@
         >
         <span class="brandTxt">Your Company</span>
       </router-link>
-      <app-navigation/>
       <div class="banner">
         <h1 class="bannerTitle">Vue</h1>
         <p class="bannerDesc">Complex web apps made easy</p>
