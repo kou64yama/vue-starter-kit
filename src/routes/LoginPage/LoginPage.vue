@@ -1,14 +1,14 @@
 <template>
-  <div class="root">
-    <div class="container">
+  <div :class="$style.root">
+    <div :class="$style.container">
       <h1>{{ title }}</h1>
-      <p class="lead">
+      <p :class="$style.lead">
         Log in with your username or company email address.
       </p>
-      <div class="formGroup">
-        <a class="facebook button" href="/login/facebook">
+      <div :class="$style.formGroup">
+        <a :class="$style.facebook" href="/login/facebook">
           <svg
-            class="icon"
+            :class="$style.icon"
             width="30"
             height="30"
             viewBox="0 0 30 30"
@@ -19,10 +19,10 @@
           <span>Log in with Facebook</span>
         </a>
       </div>
-      <div class="formGroup">
-        <a class="google button" href="/login/google">
+      <div :class="$style.formGroup">
+        <a :class="$style.google" href="/login/google">
           <svg
-            class="icon"
+            :class="$style.icon"
             width="30"
             height="30"
             viewBox="0 0 30 30"
@@ -40,10 +40,10 @@
           <span>Log in with Google</span>
         </a>
       </div>
-      <div class="formGroup">
-        <a class="twitter button" href="/login/twitter">
+      <div :class="$style.formGroup">
+        <a :class="$style.twitter" href="/login/twitter">
           <svg
-            class="icon"
+            :class="$style.icon"
             width="30"
             height="30"
             viewBox="0 0 30 30"
@@ -60,32 +60,32 @@
           <span>Log in with Twitter</span>
         </a>
       </div>
-      <strong class="lineThrough">OR</strong>
+      <strong :class="$style.lineThrough">OR</strong>
       <form method="post">
-        <div class="formGroup">
-          <label class="label" for="usernameOrEmail">
+        <div :class="$style.formGroup">
+          <label :class="$style.label" for="usernameOrEmail">
             Username or email address:
             <input
-              class="input"
+              :class="$style.input"
               id="usernameOrEmail"
               type="text"
               name="usernameOrEmail"
               autofocus>
           </label>
         </div>
-        <div class="formGroup">
-          <label class="label" for="password">
+        <div :class="$style.formGroup">
+          <label :class="$style.label" for="password">
             Password:
             <input
-              class="input"
+              :class="$style.input"
               id="password"
               type="text"
               name="password"
               autofocus>
           </label>
         </div>
-        <div class="formGroup">
-          <button class="button" type="submit">
+        <div :class="$style.formGroup">
+          <button :class="$style.button" type="submit">
             Log in
           </button>
         </div>
@@ -95,4 +95,4 @@
 </template>
 
 <script lang="ts" src="./LoginPage.ts"></script>
-<style scoped src="./LoginPage.css"></style>
+<style module src="./LoginPage.css"></style>

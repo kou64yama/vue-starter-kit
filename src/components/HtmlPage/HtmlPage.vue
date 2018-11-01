@@ -1,6 +1,6 @@
 <template>
-  <div class="root">
-    <div class="container">
+  <div :class="$style.root">
+    <div :class="$style.container">
       <h1>{{ title }}</h1>
       <div v-html="html"></div>
     </div>
@@ -8,4 +8,4 @@
 </template>
 
 <script lang="ts" src="./HtmlPage.ts"></script>
-<style scoped src="./HtmlPage.css"></style>
+<style module src="./HtmlPage.css"></style>

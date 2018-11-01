@@ -1,20 +1,23 @@
 <template functional>
-  <div class="root" role="navigation">
-    <router-link class="link" :to="{ name: 'about' }">
+  <div :class="$style.root" role="navigation">
+    <router-link :class="$style.link" :to="{ name: 'about' }">
       About
     </router-link>
-    <router-link class="link" :to="{ name: 'contact' }">
+    <router-link :class="$style.link" :to="{ name: 'contact' }">
       Contact
     </router-link>
-    <span class="spacer"> | </span>
-    <router-link class="link" :to="{ name: 'login' }">
+    <span :class="$style.spacer"> | </span>
+    <router-link :class="$style.link" :to="{ name: 'login' }">
       Log in
     </router-link>
-    <span class="spacer">or</span>
-    <router-link class="link highlight" :to="{ name: 'register' }">
+    <span :class="$style.spacer">or</span>
+    <router-link
+      :class="`${$style.link} ${$style.highlight}`"
+      :to="{ name: 'register' }"
+    >
       Sign up
     </router-link>
   </div>
 </template>
 
-<style scoped src="./AppNavigation.css"></style>
+<style module src="./AppNavigation.css"></style>

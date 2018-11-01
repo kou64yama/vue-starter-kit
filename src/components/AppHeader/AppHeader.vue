@@ -1,8 +1,8 @@
 <template>
-  <div class="root">
-    <div class="container">
+  <div :class="$style.root">
+    <div :class="$style.container">
       <app-navigation/>
-      <router-link class="brand" :to="{ name: 'home' }">
+      <router-link :class="$style.brand" :to="{ name: 'home' }">
         <img
           src="./logo-small.png"
           :srcSet="`${logoUrl2x} 2x`"
@@ -10,15 +10,15 @@
           height="38"
           alt="Vue"
         >
-        <span class="brandTxt">Your Company</span>
+        <span :class="$style.brandTxt">Your Company</span>
       </router-link>
-      <div class="banner">
-        <h1 class="bannerTitle">Vue</h1>
-        <p class="bannerDesc">Complex web apps made easy</p>
+      <div :class="$style.banner">
+        <h1 :class="$style.bannerTitle">Vue</h1>
+        <p :class="$style.bannerDesc">Complex web apps made easy</p>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" src="./AppHeader.ts"></script>
-<style scoped src="./AppHeader.css"></style>
+<style module src="./AppHeader.css"></style>

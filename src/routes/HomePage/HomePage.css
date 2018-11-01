@@ -28,7 +28,7 @@
   font-size: 1.5rem;
 }
 
-.newsDesc >>> {
+.newsDesc /deep/ {
   h1,
   h2,
   h3,

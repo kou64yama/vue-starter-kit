@@ -1,15 +1,15 @@
 <template functional>
-  <div class="root">
-    <div class="container">
-      <a class="link" href="https://gitter.im/kou64yama/vue-starter-kit">
+  <div :class="$style.root">
+    <div :class="$style.container">
+      <a :class="$style.link" href="https://gitter.im/kou64yama/vue-starter-kit">
         Ask a question
       </a>
-      <span class="spacer">|</span>
-      <a class="link" href="https://github.com/kou64yama/vue-starter-kit/issues/new">
+      <span :class="$style.spacer">|</span>
+      <a :class="$style.link" href="https://github.com/kou64yama/vue-starter-kit/issues/new">
         Report an issue
       </a>
     </div>
   </div>
 </template>
 
-<style scoped src="./AppFeedback.css"></style>
+<style module src="./AppFeedback.css"></style>

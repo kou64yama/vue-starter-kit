@@ -133,22 +133,45 @@ const config = {
       // Rules for Style Sheets
       {
         test: reStyle,
-        use: [
+        rules: [
           {
             loader: 'vue-style-loader',
           },
 
           {
-            loader: 'css-loader',
-            options: {
-              // CSS Loader https://github.com/webpack/css-loader
-              importLoaders: 1,
-              sourceMap: isDebug,
-              // CSS Nano http://cssnano.co/
-              minimize: isDebug ? false : minimizeCssOptions,
-            },
+            oneOf: [
+              // this matches `<style module>`
+              {
+                resourceQuery: /module/,
+                loader: 'css-loader',
+                options: {
+                  // CSS Loader https://github.com/webpack/css-loader
+                  importLoaders: 1,
+                  sourceMap: isDebug,
+                  // CSS Modules https://github.com/css-modules/css-modules
+                  modules: true,
+                  localIdentName: isDebug
+                    ? '[name]-[local]-[hash:base64:5]'
+                    : '[hash:base64:5]',
+                  // CSS Nano http://cssnano.co/              // CSS Nano http://cssnano.co/
+                  minimize: isDebug ? false : minimizeCssOptions,
+                },
+              },
+              // this matches plain `<style>` or `<style scoped>`
+              {
+                loader: 'css-loader',
+                options: {
+                  // CSS Loader https://github.com/webpack/css-loader
+                  importLoaders: 1,
+                  sourceMap: isDebug,
+                  // CSS Nano http://cssnano.co/              // CSS Nano http://cssnano.co/
+                  minimize: isDebug ? false : minimizeCssOptions,
+                },
+              },
+            ],
           },
 
+          // Apply PostCSS plugins including autoprefixer
           {
             loader: 'postcss-loader',
             options: {

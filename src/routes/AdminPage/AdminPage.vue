@@ -1,6 +1,6 @@
 <template>
-  <div class="root">
-    <div class="container">
+  <div :class="$style.root">
+    <div :class="$style.container">
       <h1>{{ title }}</h1>
       <p>...</p>
     </div>
@@ -8,4 +8,4 @@
 </template>
 
 <script lang="ts" src="./AdminPage.ts"></script>
-<style scoped src="./AdminPage.css"></style>
+<style module src="./AdminPage.css"></style>
