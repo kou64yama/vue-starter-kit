@@ -81,54 +81,53 @@ const config = {
         loader: 'vue-loader',
       },
 
-      // Rules for JS / JSX / TS / TSX
+      // Rules for JS / JSX
       {
-        test: reScript,
+        test: /\.jsx?$/,
         include: [SRC_DIR, resolvePath('tools')],
-        rules: [
-          {
-            loader: 'babel-loader',
-            options: {
-              // https://github.com/babel/babel-loader#options
-              cacheDirectory: isDebug,
+        loader: 'babel-loader',
+        options: {
+          // https://github.com/babel/babel-loader#options
+          cacheDirectory: isDebug,
 
-              // https://babeljs.io/docs/usage/options/
-              babelrc: false,
-              presets: [
-                // A Babel preset that can automatically determine the Babel plugins and polyfills
-                // https://github.com/babel/babel-preset-env
-                [
-                  '@babel/preset-env',
-                  {
-                    targets: {
-                      browsers: pkg.browserslist,
-                    },
-                    forceAllTransforms: !isDebug, // for UglifyJS
-                    modules: false,
-                    useBuiltIns: false,
-                    debug: false,
-                  },
-                ],
-              ],
-              plugins: ['@babel/plugin-syntax-dynamic-import'],
-            },
-          },
-          {
-            test: /\.tsx?$/,
-            loader: 'ts-loader',
-            options: {
-              transpileOnly: isDebug,
-              appendTsSuffixTo: [/\.vue$/],
-              compilerOptions: {
-                ...tsConfig.compilerOptions,
-                target: 'es2015',
-                module: 'esnext',
-                sourceMap: true,
-                inlineSourceMap: false,
+          // https://babeljs.io/docs/usage/options/
+          babelrc: false,
+          presets: [
+            // A Babel preset that can automatically determine the Babel plugins and polyfills
+            // https://github.com/babel/babel-preset-env
+            [
+              '@babel/preset-env',
+              {
+                targets: {
+                  browsers: pkg.browserslist,
+                },
+                forceAllTransforms: !isDebug, // for UglifyJS
+                modules: false,
+                useBuiltIns: false,
+                debug: false,
               },
-            },
+            ],
+          ],
+          plugins: ['@babel/plugin-syntax-dynamic-import'],
+        },
+      },
+
+      // Rules for TS / TSX
+      {
+        test: /\.tsx?$/,
+        include: [SRC_DIR, resolvePath('tools')],
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: isDebug,
+          appendTsSuffixTo: [/\.vue$/],
+          compilerOptions: {
+            ...tsConfig.compilerOptions,
+            target: 'es2015',
+            module: 'esnext',
+            sourceMap: true,
+            inlineSourceMap: false,
           },
-        ],
+        },
       },
 
       // Rules for Style Sheets
