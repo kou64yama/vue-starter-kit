@@ -10,17 +10,13 @@
 import webpack from 'webpack';
 import WebpackAssetsManifest from 'webpack-assets-manifest';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import VueLoaderPlugin from 'vue-loader/lib/plugin';
 import common, {
   isDebug,
   isAnalyze,
   resolvePath,
   BUILD_DIR,
 } from './webpack.common';
-
-// tslint:disable-next-line variable-name
-const VueLoaderPlugin: {
-  new (): webpack.Plugin;
-} = require('vue-loader/lib/plugin');
 
 const clientConfig = {
   ...common,

@@ -159,13 +159,13 @@
     "test-watch": "yarn run test --watch --notify",
     "test-cover": "yarn run test --coverage",
     "coverage": "yarn run test-cover && opn coverage/lcov-report/index.html",
-    "clean": "ts-node tools/run clean",
-    "copy": "ts-node tools/run copy",
-    "bundle": "ts-node tools/run bundle",
-    "build": "ts-node tools/run build",
+    "clean": "ts-node -T tools/run clean",
+    "copy": "ts-node -T tools/run copy",
+    "bundle": "ts-node -T tools/run bundle",
+    "build": "ts-node -T tools/run build",
     "build-stats": "yarn run build --release --analyse",
-    "render": "ts-node tools/run render",
-    "serve": "ts-node tools/run runServer",
-    "start": "ts-node tools/run start"
+    "render": "ts-node -T tools/run render",
+    "serve": "ts-node -T tools/run runServer",
+    "start": "ts-node -T tools/run start"
   }
 }
