@@ -1,4 +1,5 @@
 import { Fetch } from '@/createFetch';
+import runtime, { State as RuntimeState } from './runtime';
 import news, { State as NewsState } from './news';
 
 export interface State {
@@ -9,6 +10,7 @@ export interface State {
     id: string;
     email: string;
   };
+  runtime: RuntimeState;
   news: NewsState;
 }
 
@@ -17,5 +19,6 @@ export interface Getters {
 }
 
 export default {
+  runtime,
   news,
 };
