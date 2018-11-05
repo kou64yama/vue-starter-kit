@@ -150,6 +150,10 @@ app.get('*', async (req, res, next) => {
   });
 
   try {
+    await store.dispatch('runtime/setVariable', {
+      name: 'initialNow',
+      value: Date.now(),
+    });
     await new Promise(router.onReady.bind(router));
     await awaitAsyncData(router.getMatchedComponents(), {
       store,

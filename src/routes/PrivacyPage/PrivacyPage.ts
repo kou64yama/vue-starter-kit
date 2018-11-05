@@ -1,10 +1,14 @@
-import Vue from 'vue';
+import { CreateElement } from 'vue';
+import { Component, Mixins } from 'vue-property-decorator';
 import HtmlPage from '@/components/HtmlPage';
 import title from '@/mixins/title';
 import privacy from './privacy.md';
 
-export default Vue.extend({
-  mixins: [title],
+@Component({
   title: privacy.title,
-  render: h => h(HtmlPage, { props: privacy }),
-});
+})
+export default class PrivacyPage extends Mixins(title) {
+  public render(h: CreateElement) {
+    return h(HtmlPage, { props: privacy });
+  }
+}

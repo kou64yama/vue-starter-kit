@@ -1,17 +1,21 @@
-import Vue from 'vue';
-import { mapState } from 'vuex';
+import { Component, Mixins } from 'vue-property-decorator';
+import { namespace } from 'vuex-class';
 import title from '@/mixins/title';
+import { NewsItem } from '@/store/news';
 
-export default Vue.extend({
-  mixins: [title],
+const news = namespace('news');
 
+@Component({
   title: 'Home',
+  asyncData: ({ store }) => store.dispatch('news/fetch'),
+})
+export default class HomePage extends Mixins(title) {
+  @news.State('items')
+  public items!: NewsItem[];
 
-  computed: {
-    ...mapState('news', ['items', 'loading', 'error']),
-  },
+  @news.State('loading')
+  public loading!: boolean;
 
-  asyncData({ store }) {
-    return store.dispatch('news/fetch');
-  },
-});
+  @news.State('error')
+  public error!: Error | null;
+}

@@ -1,20 +1,18 @@
-import Vue from 'vue';
+import { Component, Mixins, Prop } from 'vue-property-decorator';
 import title from '@/mixins/title';
 
 const isAdmin = true;
 
-export default Vue.extend({
-  mixins: [title],
+@Component({
   title() {
     return this.$props.title;
   },
-  props: {
-    title: { type: String, required: true },
-  },
   beforeRouteEnter(_to, _from, next) {
-    if (isAdmin) {
-      return next({ name: 'login' });
-    }
-    next();
+    if (isAdmin) next({ name: 'login' });
+    else next();
   },
-});
+})
+export default class AdminPage extends Mixins(title) {
+  @Prop({ type: String, required: true })
+  public title!: string;
+}

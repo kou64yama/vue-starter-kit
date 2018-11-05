@@ -5,7 +5,7 @@
       <router-link :class="$style.brand" :to="{ name: 'home' }">
         <img
           src="./logo-small.png"
-          :srcSet="`${logoUrl2x} 2x`"
+          :srcSet="`${require('./logo-small@2x.png')} 2x`"
           width="38"
           height="38"
           alt="Vue"

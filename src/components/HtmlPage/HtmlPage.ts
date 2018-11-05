@@ -1,8 +1,11 @@
 import Vue from 'vue';
+import { Component, Prop } from 'vue-property-decorator';
 
-export default Vue.extend({
-  props: {
-    title: { type: String, required: true },
-    html: { type: String, required: false },
-  },
-});
+@Component
+export default class HtmlPage extends Vue {
+  @Prop({ type: String, required: false })
+  public title!: string;
+
+  @Prop({ type: String, required: false })
+  public html!: string;
+}

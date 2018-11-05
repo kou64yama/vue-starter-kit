@@ -1,10 +1,14 @@
-import Vue from 'vue';
+import { CreateElement } from 'vue';
+import { Component, Mixins } from 'vue-property-decorator';
 import HtmlPage from '@/components/HtmlPage';
 import title from '@/mixins/title';
 import about from './about.md';
 
-export default Vue.extend({
-  mixins: [title],
+@Component({
   title: about.title,
-  render: h => h(HtmlPage, { props: about }),
-});
+})
+export default class AboutPage extends Mixins(title) {
+  public render(h: CreateElement) {
+    return h(HtmlPage, { props: about });
+  }
+}

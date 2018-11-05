@@ -1,10 +1,12 @@
 import Vue from 'vue';
+import { Component, Prop } from 'vue-property-decorator';
 
-export default Vue.extend({
-  props: {
-    error: { type: Error, required: true },
-  },
-  computed: {
-    isDev: () => __DEV__,
-  },
-});
+@Component
+export default class ErrorPage extends Vue {
+  @Prop({ type: Error, required: true })
+  public error!: Error;
+
+  public get isDev() {
+    return __DEV__;
+  }
+}

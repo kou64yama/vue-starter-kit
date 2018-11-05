@@ -1,7 +1,22 @@
-declare module '*.vue' {
-  import Vue from 'vue';
+import Vue, { ComponentOptions } from 'vue';
+import { Route } from 'vue-router';
+import { Store } from 'vuex';
 
-  const ComponentClass: typeof Vue;
+interface AsyncDataContext<S> {
+  route: Route;
+  store: Store<S>;
+}
 
-  export default ComponentClass;
+declare module 'vue/types/vue' {
+  interface VueConstructor {
+    asyncData?: <S = {}>(context: AsyncDataContext<S>) => any;
+    options: ComponentOptions<Vue>;
+  }
+}
+
+declare module 'vue/types/options' {
+  interface ComponentOptions<V extends Vue> {
+    title?: string | (() => string);
+    asyncData?: <S = {}>(context: AsyncDataContext<S>) => any;
+  }
 }

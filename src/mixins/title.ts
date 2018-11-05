@@ -1,9 +1,7 @@
 // https://ssr.vuejs.org/guide/head.html
 
 import Vue from 'vue';
-import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options';
-
-type Mixin = ThisTypedComponentOptionsWithRecordProps<Vue, {}, {}, {}, {}>;
+import { Component } from 'vue-property-decorator';
 
 function getTitle(vm: Vue) {
   const title =
@@ -13,22 +11,24 @@ function getTitle(vm: Vue) {
   return `${title || 'Untitled Page '} - www.vuestarterkit.com`;
 }
 
-const serverTitleMixin: Mixin = {
-  created() {
+@Component
+class ServerTitleMixin extends Vue {
+  public created() {
     const title = getTitle(this);
     if (title) {
       this.$ssrContext.title = title;
     }
-  },
-};
+  }
+}
 
-const clientTitleMixin: Mixin = {
-  mounted() {
+@Component
+class ClientTitleMixin extends Vue {
+  public mounted() {
     const title = getTitle(this);
     if (title) {
       document.title = title;
     }
-  },
-};
+  }
+}
 
-export default (process.env.BROWSER ? clientTitleMixin : serverTitleMixin);
+export default (process.env.BROWSER ? ClientTitleMixin : ServerTitleMixin);
