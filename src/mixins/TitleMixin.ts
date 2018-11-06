@@ -8,7 +8,7 @@ function getTitle(vm: Vue) {
     typeof vm.$options.title === 'function'
       ? vm.$options.title.call(vm)
       : vm.$options.title;
-  return `${title || 'Untitled Page '} - www.vuestarterkit.com`;
+  return `${title || 'Untitled Page '} - vuestarterkit.herokuapp.com`;
 }
 
 @Component
