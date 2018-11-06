@@ -4,6 +4,10 @@ import createFetch from './createFetch';
 import awaitAsyncData from './awaitAsyncData';
 import { State } from './store';
 
+interface GTag {
+  (command: string, ...args: any[]): any;
+}
+
 declare const window: Window & {
   __INITIAL_STATE__: State;
 };
@@ -46,6 +50,16 @@ router.onReady(() => {
       next(err);
     }
   });
+
+  if (window.gtag) {
+    router.afterEach((to, _from) =>
+      vm.$nextTick(() => {
+        window.gtag!('config', store.state.app.googleTrackingId, {
+          page_path: to.fullPath,
+        });
+      }),
+    );
+  }
 
   vm.$mount('#app');
 });

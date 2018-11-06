@@ -142,6 +142,7 @@ app.get('*', async (req, res, next) => {
     ...store.state,
     app: {
       apiUrl: config.api.clientUrl,
+      googleTrackingId: config.analytics.googleTrackingId,
     },
     me: req.user && {
       id: req.user.id,
@@ -169,6 +170,7 @@ app.get('*', async (req, res, next) => {
         scripts: [assets['vendors.js'], assets['client.js']],
         styles: context.renderStyles(),
         state: context.renderState(),
+        googleTrackingId: config.analytics.googleTrackingId,
       }),
     );
   } catch (err) {
@@ -200,6 +202,7 @@ app.use((async (err, _req, res, next) => {
         description: err.message,
         scripts: [],
         styles: context.renderStyles(),
+        googleTrackingId: config.analytics.googleTrackingId,
       }),
     );
   } catch (err) {

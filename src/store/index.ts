@@ -5,6 +5,7 @@ import news, { State as NewsState } from './news';
 export interface State {
   app: {
     apiUrl: string;
+    googleTrackingId: string;
   };
   me?: {
     id: string;

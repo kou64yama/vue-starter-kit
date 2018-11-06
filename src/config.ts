@@ -33,6 +33,12 @@ export default {
   // Database
   databaseUrl: process.env.DATABASE_URL || 'sqlite:database.sqlite',
 
+  // Web analytics
+  analytics: {
+    // https://analytics.google.com/
+    googleTrackingId: process.env.GOOGLE_TRACKING_ID, // UA-XXXXX-X
+  },
+
   // Authentication
   auth: {
     jwt: { secret: process.env.JWT_SECRET || 'Vue Starter Kit' },
