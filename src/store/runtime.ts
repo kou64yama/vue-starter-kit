@@ -33,5 +33,5 @@ export default {
   mutations,
   actions,
   state: initialState,
-  namespaced: initialState,
+  namespaced: true,
 };
