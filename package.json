@@ -166,6 +166,7 @@
     "bundle": "ts-node -T tools/run bundle",
     "build": "ts-node -T tools/run build",
     "build-stats": "yarn run build --release --analyse",
+    "deploy": "ts-node -T tools/run deploy",
     "render": "ts-node -T tools/run render",
     "serve": "ts-node -T tools/run runServer",
     "start": "ts-node -T tools/run start"
