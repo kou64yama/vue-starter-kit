@@ -1,12 +1,12 @@
 import { Component, Mixins, Prop } from 'vue-property-decorator';
-import title from '@/mixins/title';
+import TitleMixin from '@/mixins/TitleMixin';
 
 @Component({
   title() {
     return this.$props.title;
   },
 })
-export default class LoginPage extends Mixins(title) {
+export default class LoginPage extends Mixins(TitleMixin) {
   @Prop({ type: String, required: true })
   public title!: string;
 }

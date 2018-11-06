@@ -1,5 +1,5 @@
 import { Component, Mixins, Prop } from 'vue-property-decorator';
-import title from '@/mixins/title';
+import TitleMixin from '@/mixins/TitleMixin';
 
 const isAdmin = true;
 
@@ -12,7 +12,7 @@ const isAdmin = true;
     else next();
   },
 })
-export default class AdminPage extends Mixins(title) {
+export default class AdminPage extends Mixins(TitleMixin) {
   @Prop({ type: String, required: true })
   public title!: string;
 }
