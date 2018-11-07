@@ -15,5 +15,9 @@
 
     // https://github.com/ikatyang/tslint-plugin-prettier#readme
     "prettier": true
+  },
+
+  "linterOptions": {
+    "exclude": ["node_modules", "build", "*.json"]
   }
 }
