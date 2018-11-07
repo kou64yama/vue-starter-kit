@@ -24,7 +24,7 @@ export const mutations = {
 };
 
 export const actions = {
-  setVariables({ commit }: SetVariableContext, payload: SetVariablePayload) {
+  setVariable({ commit }: SetVariableContext, payload: SetVariablePayload) {
     commit(SET_VARIABLE, payload);
   },
 };
