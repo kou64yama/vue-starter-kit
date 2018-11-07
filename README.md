@@ -1,5 +1,7 @@
 # Vue Starter Kit — "[isomorphic](http://nerds.airbnb.com/isomorphic-javascript-future-web-apps/)" web app boilerplate
 
+[![Build Status](https://travis-ci.org/kou64yama/vue-starter-kit.svg?branch=master)](https://travis-ci.org/kou64yama/vue-starter-kit)
+
 Vue Starter Kit is inspired by [React Starter
 Kit](https://github.com/kriasoft/react-starter-kit). This is an
 opinionated boilerplate for web development built on top of
