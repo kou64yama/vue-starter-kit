@@ -18,6 +18,6 @@
     "emitDecoratorMetadata": true,
     "resolveJsonModule": true
   },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.json"],
+  "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "build"]
 }
