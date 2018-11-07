@@ -13,15 +13,22 @@
     </script>
     {{/if}}
     <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{title}}</title>
     <meta name="description" content="{{description}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{#each scripts}}
+    <link rel="preload" href="{{this}}" as="script">
+    {{/each}}
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" href="/icon.png">
     {{{styles}}}
   </head>
   <body>
     {{{html}}}
     {{{state}}}
     {{#each scripts}}
-    <script lang="ts" src="{{this}}"></script>
+    <script src="{{this}}"></script>
     {{/each}}
   </body>
 </html>
