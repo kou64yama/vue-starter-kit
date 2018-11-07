@@ -4,10 +4,6 @@ import createFetch from './createFetch';
 import awaitAsyncData from './awaitAsyncData';
 import { State } from './store';
 
-interface GTag {
-  (command: string, ...args: any[]): any;
-}
-
 declare const window: Window & {
   __INITIAL_STATE__: State;
 };
