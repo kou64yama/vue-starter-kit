@@ -7,7 +7,6 @@
  * LICENSE.txt file in https://github.com/kriasoft/react-starter-kit.
  */
 
-import { SyncOptions } from 'sequelize';
 import sequelize from '../sequelize';
 import User from './User';
 import UserLogin from './UserLogin';
@@ -35,7 +34,7 @@ User.hasOne(UserProfile, {
   onDelete: 'cascade',
 });
 
-const sync: typeof sequelize.sync = options => sequelize.sync(options);
+const sync: typeof sequelize.sync = (...args) => sequelize.sync(...args);
 
 export default { sync };
 export { User, UserLogin, UserClaim, UserProfile };
