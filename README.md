@@ -18,5 +18,5 @@ professionals and newcomers to the industry.
 
 Copyright © 2018-present YAMADA Koji. This source code is licensed
 under the MIT license found in the
-[LICENSE.txt](https://github.com/kou6yama/vue-starter-kit/blob/master/LICENSE.txt)
+[LICENSE.txt](https://github.com/kou64yama/vue-starter-kit/blob/master/LICENSE.txt)
 file.
