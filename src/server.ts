@@ -20,7 +20,7 @@ import Vue from 'vue';
 import { createRenderer } from 'vue-server-renderer';
 import PrettyError from 'pretty-error';
 import createApp from './createApp';
-import ErrorPage from './routes/ErrorPage';
+import ErrorPage from './routes/ErrorPage.vue';
 import assets from './asset-manifest.json';
 import template from './template.hbs';
 import createFetch from './createFetch';
