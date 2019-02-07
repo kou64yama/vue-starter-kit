@@ -140,13 +140,22 @@
       "package.json"
     ],
     "linters": {
-      "*.{ts,tsx}": [
+      "*.{js,jsx,ts,tsx}": [
         "eslint --fix",
         "git add --force"
       ],
       "*.{json,md}": [
         "prettier --write",
         "git add --force"
+      ],
+      "*.{css,less,styl,scss,sass,sss}": [
+        "stylelint --fix",
+        "add git --force"
+      ],
+      "*.vue": [
+        "eslint --fix",
+        "stylelint --fix",
+        "add git --force"
       ]
     }
   },
@@ -156,8 +165,8 @@
     }
   },
   "scripts": {
-    "lint-ts": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" --ignore-pattern build .",
-    "lint-css": "stylelint \"src/**/*.{css,less,styl,scss,sass,sss}\"",
+    "lint-ts": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" --ignore-pattern build \"**/*.{js,jsx,ts,tsx,vue}\"",
+    "lint-css": "stylelint \"src/**/*.{css,less,styl,scss,sass,sss,vue}\"",
     "lint": "yarn run lint-ts && yarn run lint-css",
     "fix-ts": "yarn run lint-ts --fix",
     "fix-css": "yarn run lint-css --fix",
