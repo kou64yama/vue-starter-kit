@@ -1,3 +1,5 @@
+/* eslint-env jest */
+
 import { shallowMount } from '@vue/test-utils';
 import RootLayout from './RootLayout.vue';
 import stubs from '@/test/stubs';

@@ -2,7 +2,8 @@
   <div :class="$style.root">
     <div :class="$style.container">
       <h1>{{ title }}</h1>
-      <div v-html="html"></div>
+      <!-- eslint-disable-next-line vue/no-v-html -->
+      <div v-html="html" />
     </div>
   </div>
 </template>

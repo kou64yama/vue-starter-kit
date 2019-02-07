@@ -1,9 +1,9 @@
 <template>
   <div>
-    <app-header/>
-    <router-view/>
-    <app-feedback/>
-    <app-footer/>
+    <app-header />
+    <router-view />
+    <app-feedback />
+    <app-footer />
   </div>
 </template>
 
