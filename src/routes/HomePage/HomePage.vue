@@ -2,14 +2,21 @@
   <div :class="$style.root">
     <div :class="$style.container">
       <h1>Vue.js News</h1>
-      <p v-if="error">{{ error.message }}</p>
+      <p v-if="error">
+        {{ error.message }}
+      </p>
       <article v-for="item in items" :key="item.link" :class="$style.newsItem">
         <h1 :class="$style.newsTitle">
-          <a :href="item.link">{{ item.title }}</a>
+          <a :href="item.link">
+            {{ item.title }}
+          </a>
         </h1>
-        <div :class="$style.newsDesc" v-html="item.content"/>
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <div :class="$style.newsDesc" v-html="item.content" />
       </article>
-      <p v-if="loading">Loading...</p>
+      <p v-if="loading">
+        Loading...
+      </p>
     </div>
   </div>
 </template>

@@ -2,12 +2,12 @@
 
 exports[`RootLayout renders children correctly 1`] = `
 <div>
-  <appheader-stub />
+  <app-header-stub />
    
   <routerview-stub />
    
-  <appfeedback-stub />
+  <app-feedback-stub />
    
-  <appfooter-stub />
+  <app-footer-stub />
 </div>
 `;

@@ -6,11 +6,15 @@
     <router-link :class="$style.link" :to="{ name: 'contact' }">
       Contact
     </router-link>
-    <span :class="$style.spacer"> | </span>
+    <span :class="$style.spacer">
+      |
+    </span>
     <router-link :class="$style.link" :to="{ name: 'login' }">
       Log in
     </router-link>
-    <span :class="$style.spacer">or</span>
+    <span :class="$style.spacer">
+      or
+    </span>
     <router-link
       :class="`${$style.link} ${$style.highlight}`"
       :to="{ name: 'register' }"

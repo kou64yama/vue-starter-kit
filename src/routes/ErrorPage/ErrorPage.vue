@@ -1,7 +1,7 @@
 <template>
   <div v-if="isDev && error">
-    <h1>{{error.name}}</h1>
-    <pre>{{error.stack}}</pre>
+    <h1>{{ error.name }}</h1>
+    <pre>{{ error.stack }}</pre>
   </div>
   <div v-else>
     <h1>Error</h1>
