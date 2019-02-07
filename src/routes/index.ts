@@ -4,12 +4,13 @@ const routes: RouteConfig[] = [
   {
     name: 'home',
     path: '/',
-    component: () => import(/* webpackChunkName: 'home' */ './HomePage'),
+    component: () => import(/* webpackChunkName: 'home' */ './HomePage.vue'),
   },
   {
     name: 'contact',
     path: '/contact',
-    component: () => import(/* webpackChunkName: 'contact' */ './ContactPage'),
+    component: () =>
+      import(/* webpackChunkName: 'contact' */ './ContactPage.vue'),
     props: {
       title: 'Contact Us',
     },
@@ -17,7 +18,7 @@ const routes: RouteConfig[] = [
   {
     name: 'login',
     path: '/login',
-    component: () => import(/* webpackChunkName: 'login' */ './LoginPage'),
+    component: () => import(/* webpackChunkName: 'login' */ './LoginPage.vue'),
     props: {
       title: 'Log In',
     },
@@ -26,7 +27,7 @@ const routes: RouteConfig[] = [
     name: 'register',
     path: '/register',
     component: () =>
-      import(/* webpackChunkName: 'register' */ './RegisterPage'),
+      import(/* webpackChunkName: 'register' */ './RegisterPage.vue'),
     props: {
       title: 'New User Registration',
     },
@@ -44,7 +45,7 @@ const routes: RouteConfig[] = [
   {
     name: 'admin',
     path: '/admin',
-    component: () => import(/* webpackChunkName: 'admin' */ './AdminPage'),
+    component: () => import(/* webpackChunkName: 'admin' */ './AdminPage.vue'),
     props: {
       title: 'Admin Page',
     },
@@ -55,7 +56,7 @@ const routes: RouteConfig[] = [
     name: 'not-found',
     path: '*',
     component: () =>
-      import(/* webpackChunkName: 'not-found' */ './NotFoundPage'),
+      import(/* webpackChunkName: 'not-found' */ './NotFoundPage.vue'),
     props: {
       title: 'Page Not Found',
     },

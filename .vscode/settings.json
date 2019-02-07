@@ -1,7 +1,4 @@
 {
-  "files.associations": {
-    "*.css": "postcss"
-  },
   "eslint.autoFixOnSave": true,
   "eslint.validate": [
     "javascript",
@@ -9,5 +6,6 @@
     { "language": "typescript", "autoFix": true },
     { "language": "typescriptreact", "autoFix": true },
     { "language": "vue", "autoFix": true }
-  ]
+  ],
+  "vetur.validation.style": false
 }
