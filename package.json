@@ -156,7 +156,7 @@
     }
   },
   "scripts": {
-    "lint-ts": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" \"**/*.{js,jsx,ts,tsx,vue}\"",
+    "lint-ts": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" --ignore-pattern build .",
     "lint-css": "stylelint \"src/**/*.{css,less,styl,scss,sass,sss}\"",
     "lint": "yarn run lint-ts && yarn run lint-css",
     "fix-ts": "yarn run lint-ts --fix",

@@ -83,16 +83,11 @@ module.exports = {
   // setupFiles: // [array]
   // setupTestFrameworkScriptFile: // [string]
 
-  snapshotSerializers:[
-    'jest-serializer-vue',
-  ],
+  snapshotSerializers: ['jest-serializer-vue'],
 
   // testEnvironment: // [string]
 
-  testMatch: [
-    '**/__tests__/**/*.ts?(x)',
-    '**/?(*.)+(spec|test).ts?(x)',
-  ],
+  testMatch: ['**/__tests__/**/*.ts?(x)', '**/?(*.)+(spec|test).ts?(x)'],
 
   // testPathIgnorePatterns: // [array<string>]
   // testRegex: // [string]
