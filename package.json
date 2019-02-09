@@ -150,12 +150,12 @@
       ],
       "*.{css,less,styl,scss,sass,sss}": [
         "stylelint --fix",
-        "add git --force"
+        "git add --force"
       ],
       "*.vue": [
         "eslint --fix",
         "stylelint --fix",
-        "add git --force"
+        "git add --force"
       ]
     }
   },
