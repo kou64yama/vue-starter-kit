@@ -24,7 +24,6 @@ import ErrorPage from './routes/ErrorPage.vue';
 import assets from './asset-manifest.json';
 import template from './template.hbs';
 import createFetch from './createFetch';
-import awaitAsyncData from './awaitAsyncData';
 import passport from './passport';
 import models from './data/models';
 import schema from './data/schema';
@@ -39,6 +38,7 @@ interface RendererContext {
   renderState(): string;
   renderScripts(): string;
   renderStyles(): string;
+  rendered?: () => any;
   state?: any;
   title?: string;
 }
@@ -155,12 +155,11 @@ app.get('*', async (req, res, next) => {
       name: 'initialNow',
       value: Date.now(),
     });
+
     await new Promise(router.onReady.bind(router));
-    await awaitAsyncData(router.getMatchedComponents(), {
-      store,
-      route: router.currentRoute,
-    });
-    const context = { state: store.state } as RendererContext;
+    const context = {
+      rendered: () => (context.state = store.state),
+    } as RendererContext;
     const html = await renderer.renderToString(vm, context);
     res.send(
       template({

@@ -1,7 +1,6 @@
 import 'whatwg-fetch';
 import createApp from './createApp';
 import createFetch from './createFetch';
-import awaitAsyncData from './awaitAsyncData';
 import { State } from './store';
 
 declare const window: Window & {
@@ -20,33 +19,6 @@ const { vm, router, store } = createApp({
 store.replaceState(initialState);
 
 router.onReady(() => {
-  router.beforeResolve(async (to, from, next) => {
-    const matched = router.getMatchedComponents(to);
-    const prevMatched = router.getMatchedComponents(from);
-
-    // we only care about non-previously-rendered components,
-    // so we compare them until the two matched lists differ
-    let diffed = false;
-    const activated = matched.filter((c, i) => {
-      return diffed || (diffed = prevMatched[i] !== c);
-    });
-
-    if (!activated.length) {
-      return next();
-    }
-
-    // this is where we should trigger a loading indicator if there is one
-
-    try {
-      await awaitAsyncData(activated, { store, route: to });
-      // stop loading indicator
-
-      next();
-    } catch (err) {
-      next(err);
-    }
-  });
-
   if (window.gtag) {
     router.afterEach((to, _from) =>
       vm.$nextTick(() => {

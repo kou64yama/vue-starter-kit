@@ -31,7 +31,6 @@ const news = namespace('news');
 
 @Component({
   title: 'Home',
-  asyncData: ({ store }) => store.dispatch('news/fetch'),
 })
 export default class HomePage extends Mixins(TitleMixin) {
   @news.State('items')
@@ -42,6 +41,14 @@ export default class HomePage extends Mixins(TitleMixin) {
 
   @news.State('error')
   public error!: Error | null;
+
+  public serverPrefetch() {
+    return this.$store.dispatch('news/fetch');
+  }
+
+  public mounted() {
+    return this.$store.dispatch('news/fetch');
+  }
 }
 </script>
 
