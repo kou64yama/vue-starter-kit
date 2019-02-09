@@ -15,12 +15,14 @@ export interface State {
   items: NewsItem[];
   loading: boolean;
   error: any;
+  lastFetchedAt: number;
 }
 
 export const initialState: () => State = () => ({
   items: [],
   loading: false,
   error: null,
+  lastFetchedAt: Number.MIN_SAFE_INTEGER,
 });
 
 export const mutations = {
@@ -31,6 +33,7 @@ export const mutations = {
     state.items = items;
     state.loading = false;
     state.error = null;
+    state.lastFetchedAt = Date.now();
   },
   [FETCH_ERROR](state: State, error: any) {
     state.loading = false;
@@ -40,12 +43,18 @@ export const mutations = {
 
 export const actions = {
   async fetch({
+    state,
     commit,
     rootGetters,
   }: {
+    state: State;
     commit: Commit;
     rootGetters: RootGetters;
   }) {
+    if (Date.now() - state.lastFetchedAt <= 1000 * 60 * 10 /* 10 mins */) {
+      return;
+    }
+
     try {
       commit(FETCH);
       const resp = await rootGetters.fetch('/graphql', {
