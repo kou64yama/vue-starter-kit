@@ -57,3 +57,18 @@ router.onReady(() => {
 
   vm.$mount('#app');
 });
+
+if (gtag) {
+  document.addEventListener(
+    'click',
+    event => {
+      const target = event.target as HTMLAnchorElement | null;
+      if (!target || target.tagName !== 'A') return;
+      gtag('event', 'click', {
+        event_category: 'link',
+        event_label: target.href,
+      });
+    },
+    false,
+  );
+}
