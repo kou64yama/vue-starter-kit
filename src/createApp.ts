@@ -12,6 +12,12 @@ Vue.config.productionTip = __DEV__;
 Vue.use(Router);
 Vue.use(Vuex);
 
+Vue.mixin({
+  computed: {
+    __DEV__: () => __DEV__,
+  },
+});
+
 interface Options {
   fetch: Fetch;
 }
