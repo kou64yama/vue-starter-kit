@@ -14,20 +14,14 @@ function getTitle(vm: Vue) {
 @Component
 class ServerTitleMixin extends Vue {
   public created() {
-    const title = getTitle(this);
-    if (title) {
-      this.$ssrContext.title = title;
-    }
+    this.$ssrContext.title = getTitle(this);
   }
 }
 
 @Component
 class ClientTitleMixin extends Vue {
   public mounted() {
-    const title = getTitle(this);
-    if (title) {
-      document.title = title;
-    }
+    document.title = getTitle(this);
   }
 }
 

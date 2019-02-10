@@ -8,13 +8,13 @@ declare const window: Window & {
   __INITIAL_STATE__: State;
 };
 
+const gtag = window.gtag;
 const initialState = window.__INITIAL_STATE__;
+const { googleTrackingId, apiUrl } = initialState.app;
 delete window.__INITIAL_STATE__;
 
 const { vm, router, store } = createApp({
-  fetch: createFetch(fetch, {
-    baseUrl: initialState.app.apiUrl,
-  }),
+  fetch: createFetch(fetch, { baseUrl: apiUrl }),
 });
 
 store.replaceState(initialState);
@@ -47,14 +47,12 @@ router.onReady(() => {
     }
   });
 
-  if (window.gtag) {
-    router.afterEach((to, _from) =>
+  if (gtag && googleTrackingId) {
+    router.afterEach(({ fullPath }) => {
       vm.$nextTick(() => {
-        window.gtag!('config', store.state.app.googleTrackingId, {
-          page_path: to.fullPath,
-        });
-      }),
-    );
+        gtag('config', googleTrackingId, { page_path: fullPath });
+      });
+    });
   }
 
   vm.$mount('#app');
