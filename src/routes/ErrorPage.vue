@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isDev && error">
+  <div v-if="__DEV__ && error">
     <h1>{{ error.name }}</h1>
     <pre>{{ error.stack }}</pre>
   </div>
@@ -17,10 +17,6 @@ import { Component, Prop } from 'vue-property-decorator';
 export default class ErrorPage extends Vue {
   @Prop({ type: Error, required: true })
   public error!: Error;
-
-  public get isDev() {
-    return __DEV__;
-  }
 }
 </script>
 
