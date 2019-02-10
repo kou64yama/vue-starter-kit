@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Vuex from 'vuex';
 import { sync } from 'vuex-router-sync';
+import { Component } from 'vue-property-decorator';
 import routes from './routes';
 import modules, { State } from './store';
 import createLogger from './store/plugins/logger';
@@ -17,6 +18,8 @@ Vue.mixin({
     __DEV__: () => __DEV__,
   },
 });
+
+Component.registerHooks(['title', 'asyncData']);
 
 interface Options {
   fetch: Fetch;

@@ -22,6 +22,7 @@
 </template>
 
 <script lang="ts">
+import { Store } from 'vuex';
 import { Component, Mixins } from 'vue-property-decorator';
 import { namespace } from 'vuex-class';
 import TitleMixin from '@/mixins/TitleMixin';
@@ -29,10 +30,7 @@ import { NewsItem } from '@/store/news';
 
 const news = namespace('news');
 
-@Component({
-  title: 'Home',
-  asyncData: ({ store }) => store.dispatch('news/fetch'),
-})
+@Component({ title: 'Home' })
 export default class HomePage extends Mixins(TitleMixin) {
   @news.State('items')
   public items!: NewsItem[];
@@ -42,6 +40,10 @@ export default class HomePage extends Mixins(TitleMixin) {
 
   @news.State('error')
   public error!: Error | null;
+
+  public static asyncData({ store }: { store: Store<{}> }) {
+    return store.dispatch('news/fetch');
+  }
 }
 </script>
 
