@@ -59,16 +59,17 @@ router.onReady(() => {
 });
 
 if (gtag) {
-  document.addEventListener(
-    'click',
-    event => {
-      const target = event.target as HTMLAnchorElement | null;
-      if (!target || target.tagName !== 'A') return;
-      gtag('event', 'click', {
-        event_category: 'link',
-        event_label: target.href,
-      });
-    },
-    false,
-  );
+  document.addEventListener('click', event => {
+    let target = event.target as HTMLElement | null;
+    while (target && target.tagName !== 'A') {
+      target = target.parentElement;
+    }
+    if (!target) return;
+
+    const { href } = target as HTMLAnchorElement;
+    gtag('event', 'click', {
+      event_category: 'link',
+      event_label: href,
+    });
+  });
 }
