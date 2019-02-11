@@ -73,3 +73,11 @@ if (gtag) {
     });
   });
 }
+
+if (gtag) {
+  window.onerror = message => {
+    gtag('event', 'exception', {
+      description: message,
+    });
+  };
+}
